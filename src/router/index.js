@@ -6,6 +6,6 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/', name: 'ForumThreads', component: ForumThreads }
+    { path: '/', name: 'ForumThreads', component: ForumThreads },
   ]
 })
