@@ -1,7 +1,9 @@
 <template>
   <div class="app">
     <the-navbar></the-navbar>
-    <router-view/>
+    <div class="container">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -16,3 +18,18 @@ export default {
 }
 </script>
 
+<style>
+.user-post-text {
+  font-style: italic;
+}
+
+.user-post-username {
+  font-style: normal; 
+  font-size: 14px;
+}
+
+.avatar {
+  height: 60px;
+  width: 60px
+}
+</style>

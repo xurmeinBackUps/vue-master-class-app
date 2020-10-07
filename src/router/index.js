@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ForumThreads from '@/components/ForumThreads.vue';
+import ThePage from '@/components/ThePage.vue';
+import ThreadShow from '@/components/thread/ThreadShow.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/', name: 'ForumThreads', component: ForumThreads },
+    { path: '/', name: 'ThePage', component: ThePage },
+    { path: '/thread/:id', name: 'ThreadShow', component: ThreadShow, props: true }
   ]
 })

@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <section v-for="thread in threads" :key="thread.key" class="section">
-      <h2>{{ thread.title }}</h2>
+  <div>
+    <h2>{{ thread.title }}</h2>
+
       <div class="posts">
 
         <table v-for="postId in thread.posts" :key="postId.key">
@@ -25,18 +25,24 @@
         </table>
 
       </div>
-    </section>
+
   </div>
 </template>
 
 <script>
-import sampleData from '../data.json';
-console.log(sampleData)
+import sampleData from '@/data.json';
+
 export default {
-  name: 'ForumThreads',
-  data () {
+  name: 'ThreadShow',
+  props: {
+    id: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
     return {
-      threads: sampleData.threads,
+      thread: sampleData.threads[this.id],
       posts: sampleData.posts,
       users: sampleData.users
     }
@@ -44,18 +50,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.user-post-text {
-  font-style: italic;
-}
-
-.user-post-username {
-  font-style: normal; 
-  font-size: 14px;
-}
-
-.avatar {
-  height: 60px;
-  width: 60px
-}
-</style>
