@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ThePage from '@/components/ThePage.vue';
-import ThreadShow from '@/components/thread/ThreadShow.vue'
+import Home from '@/views/PageHome.vue';
+import ThreadShow from '@/views/PageThreadShow.vue'
+import NotFound from '@/views/PageNotFound.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/', name: 'ThePage', component: ThePage },
-    { path: '/thread/:id', name: 'ThreadShow', component: ThreadShow, props: true }
+    { path: '/', name: 'Home', component: Home },
+    { path: '/thread/:id', name: 'ThreadShow', component: ThreadShow, props: true },
+    { path: '*', name: 'NotFound', component: NotFound }
   ]
 })

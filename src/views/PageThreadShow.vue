@@ -4,17 +4,25 @@
 
       <div class="posts">
 
-        <table v-for="postId in thread.posts" :key="postId.key">
+        <table 
+          v-for="postId in thread.posts" 
+          :key="postId.key"
+        >
 
                 
 
           <tbody>
             <tr>
               <td>
-                <img class="avatar circle" :src="users[posts[postId].userId].avatar" alt="">
+                <img
+                  class="avatar circle"
+                  :src="users[posts[postId].userId].avatar"
+                  alt=""
+                />
               </td>
               <td>
-                <p class="user-post-text">"{{ posts[postId].text }}"
+                <p class="user-post-text">
+                  "{{ posts[postId].text }}"
                   <label class="user-post-username">
                     &#8212; {{ users[posts[postId].userId].name }}
                   </label>
@@ -33,7 +41,7 @@
 import sampleData from '@/data.json';
 
 export default {
-  name: 'ThreadShow',
+  name: 'PageThreadShow',
   props: {
     id: {
       type: String,

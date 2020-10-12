@@ -1,17 +1,23 @@
 <template>
-  <div class="thread">
+  <div class="thread section">
+
     <div>
-      <p>
-        <a href="#">{{thread.title}}</a>
-      </p>
+      <h4 class="center-align truncate">
+        <router-link :to="{ name: 'ThreadShow', params: { id: thread['.key'] } }">
+          {{ thread.title }}
+        </router-link>
+      </h4>
       <p class="text-faded text-xsmall">
-        By <a href="#">{{user.name}}</a>, {{thread.publishedAt}}.
+        By <a href="#">{{ user.name }}</a>, {{ thread.publishedAt }}.
       </p>
     </div>
 
-    <div class="activity">
-      <p class="replies-count">
-        {{repliesCount}} replies
+    <div class="activity valign-wrapper">
+      <p class="replies-count left">
+        <span
+          class="new badge"
+          data-badge-caption="Replies"
+        >{{ repliesCount }}</span>
       </p>
 
       <!--<img class="avatar-medium" src="http://i0.kym-cdn.com/photos/images/facebook/000/010/934/46623-batman_pikachu_super.png" alt="">-->

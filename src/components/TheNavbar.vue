@@ -2,9 +2,14 @@
   <nav class="light-blue darken-3">
     <div class="nav-wrapper container">
       <span class="left">
-        <h1 class="nav-title">Welcome to the Forum</h1>
+        <h1 class="nav-title">Welcome to the Forums</h1>
       </span>
-      <img src="../assets/logo.png" width="60" height="60" class="brand-logo right responsive-img">
+      <img
+        src="../assets/logo.png"
+        width="60"
+        height="60"
+        class="brand-logo right responsive-img"
+      />
     </div>
   </nav>
 </template>
