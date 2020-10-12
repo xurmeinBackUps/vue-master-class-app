@@ -5,7 +5,7 @@
         <h1 class="nav-title">Welcome to the Forums</h1>
       </span>
       <img
-        src="../assets/logo.png"
+        src="./assets/logo.png"
         width="60"
         height="60"
         class="brand-logo right responsive-img"

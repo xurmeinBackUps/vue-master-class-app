@@ -1,47 +1,19 @@
 <template>
   <div>
     <h2>{{ thread.title }}</h2>
-
-      <div class="posts">
-
-        <table 
-          v-for="postId in thread.posts" 
-          :key="postId.key"
-        >
-
-                
-
-          <tbody>
-            <tr>
-              <td>
-                <img
-                  class="avatar circle"
-                  :src="users[posts[postId].userId].avatar"
-                  alt=""
-                />
-              </td>
-              <td>
-                <p class="user-post-text">
-                  "{{ posts[postId].text }}"
-                  <label class="user-post-username">
-                    &#8212; {{ users[posts[postId].userId].name }}
-                  </label>
-                </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-
+    <PostList :posts="posts" />
   </div>
 </template>
 
 <script>
 import sampleData from '@/data.json';
+import PostList from '@/components/PostList.vue'
 
 export default {
   name: 'PageThreadShow',
+  components: {
+    PostList
+  },
   props: {
     id: {
       type: String,
@@ -50,9 +22,14 @@ export default {
   },
   data() {
     return {
-      thread: sampleData.threads[this.id],
-      posts: sampleData.posts,
-      users: sampleData.users
+      thread: sampleData.threads[this.id]
+    }
+  },
+  computed: {
+    posts: function() {
+      const postIds = Object.values(this.thread.posts)
+      return Object.values(sampleData.posts)
+        .filter(post => postIds.includes(post['.key']))
     }
   }
 }
