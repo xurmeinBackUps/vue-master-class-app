@@ -2,17 +2,23 @@
   <div>
     <h2>{{ thread.title }}</h2>
     <PostList :posts="posts" />
+    <PostEditor 
+      @save-post="addPost"
+      :threadId="id"
+    />
   </div>
 </template>
 
 <script>
 import sampleData from '@/data.json';
-import PostList from '@/components/PostList.vue'
+import PostList from '@/components/PostList.vue';
+import PostEditor from '@/components/PostEditor.vue';
 
 export default {
   name: 'PageThreadShow',
   components: {
-    PostList
+    PostList,
+    PostEditor
   },
   props: {
     id: {
@@ -20,9 +26,20 @@ export default {
       required: true
     }
   },
-  data() {
+  data: function() {
     return {
-      thread: sampleData.threads[this.id]
+      thread: sampleData.threads[this.id],
+      newPostText: ''
+    }
+  },
+  methods: {
+    addPost: function({post}) {
+
+      const postId = post['.key']
+      this.$set(sampleData.posts, postId, post)
+      this.$set(this.thread.posts, postId, postId)
+      this.$set(sampleData.users[post.userId].posts, postId, postId)
+
     }
   },
   computed: {
