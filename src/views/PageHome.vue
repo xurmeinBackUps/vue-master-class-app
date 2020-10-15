@@ -1,24 +1,22 @@
 <template>
   <div>
-    <ThreadList :threads="threads"/>
+    <CategoryList :categories="categories"/>
   </div>
 </template>
 
 
 <script>
 import sampleData from '@/data.json';
-import ThreadList from '@/components/ThreadList.vue';
+import CategoryList from '@/components/CategoryList.vue';
 
 export default {
   name: 'PageHome',
   components: {
-    ThreadList
+    CategoryList
   },
-  data () {
+  data: function() {
     return {
-      threads: Object.values(sampleData.threads),
-      posts: sampleData.posts,
-      users: sampleData.users
+      categories: Object.values(sampleData.categories),
     }
   }
 }

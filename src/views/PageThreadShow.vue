@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     addPost: function({post}) {
-
       const postId = post['.key']
       this.$set(sampleData.posts, postId, post)
       this.$set(this.thread.posts, postId, postId)
