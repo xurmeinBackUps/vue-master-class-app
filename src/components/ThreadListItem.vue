@@ -8,7 +8,7 @@
         </router-link>
       </h4>
       <p class="text-faded text-xsmall">
-        By <a href="#">{{ user.name }}</a>, {{ thread.publishedAt }}.
+        By <a href="#">{{ user.name }}</a>, <VDate :timestamp="thread.publishedAt" />.
       </p>
     </div>
 
@@ -34,9 +34,13 @@
 
 <script>
 import sampleData from '@/data.json';
+import VDate from './VDate.vue';
 
 export default {
   name: 'ThreadListItem',
+  components: {
+    VDate
+  },
   props: {
     thread: {
       type: Object,

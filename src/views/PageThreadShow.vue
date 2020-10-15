@@ -1,6 +1,10 @@
 <template>
   <div>
     <h2>{{ thread.title }}</h2>
+    <p>
+      By <a href="#">{{ thread.userId }}</a>, <VDate :timestamp="thread.publishedAt"/>
+      <span>{{ posts.length }} replies</span>
+    </p>
     <PostList :posts="posts" />
     <PostEditor 
       @save-post="addPost"
@@ -13,12 +17,14 @@
 import sampleData from '@/data.json';
 import PostList from '@/components/PostList.vue';
 import PostEditor from '@/components/PostEditor.vue';
+import VDate from '@/components/VDate.vue';
 
 export default {
   name: 'PageThreadShow',
   components: {
     PostList,
-    PostEditor
+    PostEditor,
+    VDate
   },
   props: {
     id: {

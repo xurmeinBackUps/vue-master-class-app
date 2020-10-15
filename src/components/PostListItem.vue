@@ -4,7 +4,8 @@
       <img class="avatar circle" :src="user.avatar" alt="" />
       "{{ post.text }}"
       <label class="user-post-username">
-        &#8212; {{ user.name }}, {{ dateInHuman }},
+        &#8212; {{ user.name }},
+        <VDate :timestamp="post.publishedAt" />
       </label>
       {{ userPostCount }} posts
     </p>
@@ -12,11 +13,14 @@
 </template>
 
 <script>
-import moment from 'moment';
 import sampleData from '@/data.json';
+import VDate from './VDate.vue';
 
 export default {
   name: 'PostListItem',
+  components: {
+    VDate
+  },
   props: {
     post: {
       type: Object,
@@ -29,9 +33,6 @@ export default {
     },
     userPostCount: function() {
       return Object.keys(this.user.posts).length;
-    },
-    dateInHuman: function() {
-      return moment().unix(this.post.publishedAt).format('MMMM do YYYY, h:mm:ss a')
     }
   }
 };
