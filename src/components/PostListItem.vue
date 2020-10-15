@@ -4,7 +4,7 @@
       <img class="avatar circle" :src="user.avatar" alt="" />
       "{{ post.text }}"
       <label class="user-post-username">
-        &#8212; {{ user.name }}, {{ post.publishedAt }},
+        &#8212; {{ user.name }}, {{ dateInHuman }},
       </label>
       {{ userPostCount }} posts
     </p>
@@ -12,10 +12,11 @@
 </template>
 
 <script>
-import sampleData from "@/data.json";
+import moment from 'moment';
+import sampleData from '@/data.json';
 
 export default {
-  name: "PostListItem",
+  name: 'PostListItem',
   props: {
     post: {
       type: Object,
@@ -28,6 +29,9 @@ export default {
     },
     userPostCount: function() {
       return Object.keys(this.user.posts).length;
+    },
+    dateInHuman: function() {
+      return moment().unix(this.post.publishedAt).format('MMMM do YYYY, h:mm:ss a')
     }
   }
 };
