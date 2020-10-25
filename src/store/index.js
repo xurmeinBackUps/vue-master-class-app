@@ -5,7 +5,15 @@ import sampleData from '@/data.json'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: sampleData,
+  state: {
+    ...sampleData,
+    authId: 'u4r8XCziZEWEXsj2UIKNHBoDh0n2'
+  },
+  getters: {
+    authUser: function(state) {
+      return state.users[state.authId]
+    }
+  },
   actions: {
     createPost: function(context, post) {
       const postId = 'post-' + Math.random()
