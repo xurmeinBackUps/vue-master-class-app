@@ -18,7 +18,6 @@
 
 <script>
 import ThreadList from '@/components/ThreadList.vue';
-import sampleData from '@/data.json';
 
 export default {
   name: 'PageForum',
@@ -33,10 +32,10 @@ export default {
   },
   computed: {
     forum: function() {
-      return sampleData.forums[this.id]
+      return this.$store.state.forums[this.id]
     },
     threads: function() {
-      return Object.values(sampleData.threads)
+      return Object.values(this.$store.state.threads)
         .filter(thread => thread.forumId === this.id)
     }
   }

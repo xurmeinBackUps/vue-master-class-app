@@ -6,7 +6,6 @@
 
 
 <script>
-import sampleData from '@/data.json';
 import CategoryList from '@/components/CategoryList.vue';
 
 export default {
@@ -16,7 +15,7 @@ export default {
   },
   data: function() {
     return {
-      categories: Object.values(sampleData.categories),
+      categories: Object.values(this.$store.state.categories),
     }
   }
 }

@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import sampleData from '@/data.json';
 import VDate from './VDate.vue';
 
 export default {
@@ -29,7 +28,7 @@ export default {
   },
   computed: {
     user: function() {
-      return sampleData.users[this.post.userId];
+      return this.$store.state.users[this.post.userId];
     },
     userPostCount: function() {
       return Object.keys(this.user.posts).length;

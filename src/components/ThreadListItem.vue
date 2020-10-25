@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import sampleData from '@/data.json';
 import VDate from './VDate.vue';
 
 export default {
@@ -52,7 +51,7 @@ export default {
       return Object.keys(this.thread.posts).length - 1
     },
     user: function() {
-      return sampleData.users[this.thread.userId]
+      return this.$store.state.users[this.thread.userId]
     }
   }
 }
