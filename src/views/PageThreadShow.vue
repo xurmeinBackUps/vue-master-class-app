@@ -6,10 +6,7 @@
       <span>{{ posts.length }} replies</span>
     </p>
     <PostList :posts="posts" />
-    <PostEditor 
-      @save-post="addPost"
-      :threadId="id"
-    />
+    <PostEditor :threadId="id" />
   </div>
 </template>
 
@@ -35,15 +32,6 @@ export default {
     return {
       thread: this.$store.state.threads[this.id],
       newPostText: ''
-    }
-  },
-  methods: {
-    addPost: function({post}) {
-      const postId = post['.key']
-      this.$set(this.$store.state.posts, postId, post)
-      this.$set(this.thread.posts, postId, postId)
-      this.$set(this.$store.state.users[post.userId].posts, postId, postId)
-
     }
   },
   computed: {

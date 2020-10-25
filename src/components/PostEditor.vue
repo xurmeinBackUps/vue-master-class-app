@@ -32,18 +32,18 @@ export default {
   },
   methods: {
     savePost: function() {
-      const postId = 'post-' + Math.random()
+      
       const post = {
         text: this.postText,
         publishedAt: Math.floor(Date.now() / 1000),
         threadId: this.threadId,
         userId: 'u4r8XCziZEWEXsj2UIKNHBoDh0n2', // hard-coded now, f/m data.json
-        '.key': postId
       }
       // takes three args: 1) object, 2) propertyName, 3) propertyVal 
       this.postText = ''
 
       this.$emit('save-post', { post: post })
+      this.$store.dispatch('createPost', post)
     }
   }
 }
